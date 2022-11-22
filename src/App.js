@@ -10,7 +10,7 @@ function App() {
   let [data, setData] = useState([])
   let searchInput = useRef('')
 
-  const API_URL = 'https://itunes.apple.com/search?term='
+  const API_URL = 'https://itunes.apple.com/search?term=' 
   
   const handleSearch = (e, term) => {
     e.preventDefault()
