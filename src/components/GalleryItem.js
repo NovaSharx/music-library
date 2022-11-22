@@ -1,7 +1,6 @@
-import {useState} from 'react'
+import { useState } from 'react' 
 
-function GalleryItem(props) {
-
+function GalleryItem(props){
     let [view, setView] = useState(false)
 
     const simpleStyle = {
@@ -24,7 +23,7 @@ function GalleryItem(props) {
 
     const simpleView = () => {
         return (
-            <div style={simpleStyle} >
+            <div style={simpleStyle}>
                 <h3>{props.item.trackName}</h3>
                 <h4>{props.item.collectionName}</h4>
             </div>
@@ -33,7 +32,7 @@ function GalleryItem(props) {
 
     const detailView = () => {
         return (
-            <div style={detailStyle} >
+            <div style={detailStyle}>
                 <h2>{props.item.trackName}</h2>
                 <h3>{props.item.collectionName}</h3>
                 <h4>{props.item.primaryGenreName}</h4>
@@ -43,8 +42,9 @@ function GalleryItem(props) {
     }
 
     return (
-        <div onClick={() => setView(!view)} style={{'display': 'inline-block'}}>
-            {view? detailView(): simpleView()}
+        <div onClick={() =>setView(!view)} style={{'display': 'inline-block'}}>
+            {/* This simple ternary shows the simple view when 'view' is false! */}
+            {view ? detailView() : simpleView()}
         </div>
     )
 }
