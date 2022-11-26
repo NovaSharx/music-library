@@ -1,6 +1,9 @@
 import { Suspense, useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
+import ArtistView from './components/ArtistView'
+import AlbumView from './components/AlbumView'
 import { createResource as fetchData } from './helper'
 import Spinner from './Spinner'
 
@@ -32,10 +35,20 @@ function App() {
 
 	return (
 		<div>
-			<SearchBar handleSearch={handleSearch} />
-			{message}
-			{renderGallery()}
-		</div>
+      {message}
+      <Router>
+        <Routes>
+          <Route path='/' element={
+            <>
+              <SearchBar handleSearch={handleSearch} />
+              {renderGallery()}
+            </>
+          } />
+          <Route path='/artist/:id' element={<ArtistView />} />
+          <Route path='/album/:id' element={<AlbumView />} />
+        </Routes>
+      </Router>
+    </div>
 	);
 }
 
